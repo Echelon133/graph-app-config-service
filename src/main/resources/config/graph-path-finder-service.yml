@@ -9,3 +9,8 @@ eureka:
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+feign:
+  graph-storage-service:
+    name: "graph-storage-service"
+    url: http://172.17.0.5:8095
