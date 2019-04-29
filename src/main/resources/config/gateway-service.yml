@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.17.0.3:8060/eureka
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: graph-path-finder-service
+          uri: http://172.17.0.6:8097
+          predicates:
+            - Path=/api/graphs/{id}/paths
+        - id: graph-storage-service
+          uri: http://172.17.0.5:8095
+          predicates:
+            - Path=/api/graphs/,/api/graphs/{id},
