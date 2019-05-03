@@ -14,3 +14,7 @@ redis:
   host: 172.17.0.4
   port: 6379
   password: test_passwd
+
+graphs:
+  storage:
+    maxEdgesCount: 30
